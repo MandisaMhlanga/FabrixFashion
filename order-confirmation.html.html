@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabrix Fashion - Order Confirmation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8d111c;
+            --secondary: #2f3542;
+            --accent: #525252;
+            --light: #f1f2f6;
+            --dark: #2f3542;
+            --text: #2f3542;
+            --text-light: #f1f2f6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 100px;
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+        
+        .site-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .main-nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 10px 0;
+            transition: var(--transition);
+        }
+        
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+        
+        .cart-count {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+        
+        /* Main Content Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        /* Confirmation Section */
+        .confirmation-section {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 50px 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .confirmation-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .confirmation-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .order-number {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .order-details {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .order-summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .total-amount {
+            color: var(--primary);
+        }
+        
+        .delivery-info {
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 250px;
+            text-align: center;
+            margin: 20px auto 0;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            margin-top: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--light);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 20px;
+            }
+            
+            .main-nav ul {
+                gap: 15px;
+            }
+            
+            .confirmation-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="site-title">Fabrix Fashion</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="cart.html" class="cart-link">Cart <span class="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section class="confirmation-section">
+            <div class="confirmation-icon">✓</div>
+            <h2 class="confirmation-title">Thank you for your order!</h2>
+            <p>Your order has been placed successfully.</p>
+            <div class="order-number" id="orderNumber">Order #12345</div>
+            
+            <div class="order-details">
+                <h3>Order Summary</h3>
+                <div id="orderItems"></div>
+                <div class="order-total">
+                    <span>Total</span>
+                    <span class="total-amount" id="orderTotal">P0.00</span>
+                </div>
+            </div>
+            
+            <div class="delivery-info">
+                <h3>Delivery Information</h3>
+                <div id="deliveryAddress"></div>
+                <p style="margin-top: 10px;"><strong>Estimated Delivery:</strong> <span id="deliveryDate"></span></p>
+            </div>
+            
+            <p>We've sent a confirmation email with these details to your registered address.</p>
+            
+            <div class="btn-group">
+                <a href="products.html" class="btn">Continue Shopping</a>
+                <a href="index.html" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="current-year">2025</span> Fabrix Fashion. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Load order data from localStorage
+            const orderData = JSON.parse(localStorage.getItem('currentOrder')) || {};
+            const cart = orderData.cart || [];
+            
+            // Generate order number
+            const orderNum = '#' + Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('orderNumber').textContent = `Order ${orderNum}`;
+            
+            // Display order items
+            const orderItemsContainer = document.getElementById('orderItems');
+            let subtotal = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                const itemElement = document.createElement('div');
+                itemElement.className = 'order-summary-item';
+                itemElement.innerHTML = `
+                    <span>${item.name} × ${item.quantity}</span>
+                    <span>P${itemTotal.toFixed(2)}</span>
+                `;
+                orderItemsContainer.appendChild(itemElement);
+            });
+            
+            // Calculate and display total
+            const shipping = 99.00;
+            const total = subtotal + shipping;
+            document.getElementById('orderTotal').textContent = `P${total.toFixed(2)}`;
+            
+            // Display delivery address
+            document.getElementById('deliveryAddress').innerHTML = `
+                <p>${orderData.firstName} ${orderData.lastName}</p>
+                <p>${orderData.address}</p>
+                <p>${orderData.city}, ${orderData.zipCode}</p>
+                <p>${orderData.country}</p>
+                <p>Phone: ${orderData.phone}</p>
+            `;
+            
+            // Calculate delivery date (3-5 business days from now)
+            const deliveryDate = new Date();
+            deliveryDate.setDate(deliveryDate.getDate() + 3 + Math.floor(Math.random() * 3));
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('deliveryDate').textContent = deliveryDate.toLocaleDateString('en-US', options);
+            
+            // Clear cart after successful order
+            localStorage.removeItem('cart');
+            localStorage.removeItem('currentOrder');
+            
+            // Update cart count in header
+            document.querySelector('.cart-count').textContent = '0';
+        });
+    </script>
+</body>
+</html>
